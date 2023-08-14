@@ -16,6 +16,8 @@ except ImportError:
 parser = argparse.ArgumentParser(description="Check commit hashes in a specific branch")
 parser.add_argument("--repo", help="Directory path of the repository")
 parser.add_argument("--branch", help="Name of the branch to check against")
+parser.add_argument("--hashes", help="Path to a text file containing commit hashes")
+parser.add_argument("--tickets", help="Directory path containing ticket files")
 args = parser.parse_args()
 
 # Get the repository directory from command-line argument or use the current directory
@@ -24,8 +26,11 @@ if args.repo:
 else:
     repo_directory = os.getcwd()
 
-# Get the "tickets" directory within the repository
-tickets_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tickets")
+# Get the "tickets" directory from the provided argument or the script's directory
+if args.tickets:
+    tickets_directory = os.path.abspath(args.tickets)
+else:
+    tickets_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tickets")
 
 # Get the project name from the repository directory name
 project_name = os.path.basename(repo_directory)
