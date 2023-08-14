@@ -25,7 +25,7 @@ else:
     repo_directory = os.getcwd()
 
 # Get the "tickets" directory within the repository
-tickets_directory = os.path.join(repo_directory, "tickets")
+tickets_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tickets")
 
 # Get the project name from the repository directory name
 project_name = os.path.basename(repo_directory)

@@ -1,2 +1,4 @@
 .vscode
 env
+tickets/
+commit_hashes.txt
