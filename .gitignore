@@ -2,3 +2,5 @@
 env
 tickets/
 commit_hashes.txt
+.env
+*tickets*.txt
