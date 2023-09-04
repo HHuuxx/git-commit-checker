@@ -1,10 +1,15 @@
 import requests
 import base64
+from environ import Env
+
+# Initialize the environment variable reader
+env = Env()
+env.read_env()
 
 # Jira server URL, username, and API token (or password)
-JIRA_SERVER = 'https://smarterlaunch.atlassian.net/'
-JIRA_USERNAME = 'allen.antipuesto@smarterlaunch.com'
-JIRA_API_TOKEN = 'ATATT3xFfGF0aOuHlM8fet3jDKsQMl3Jgp9DWWCWSR3b9mxMaw7evlUhukJm0yG8V1oPlEHplP3oCiahymV7ocq4qpd56Rw-4aQd9cCSgAhtWTQSfA0K7uaR7_39-kdtSAXiM4a8yy5_-CsDfmgvvBPBp3Vdwa3bRnF2Uxs2BLGDSs08Ewdo7Ao=47369387'
+JIRA_SERVER = env.str("JIRA_SERVER")
+JIRA_USERNAME = env.str("JIRA_USERNAME")
+JIRA_API_TOKEN = env.str("JIRA_API_TOKEN")
 
 # Endpoint to fetch all boards
 boards_endpoint = f'{JIRA_SERVER}/rest/agile/1.0/board'
